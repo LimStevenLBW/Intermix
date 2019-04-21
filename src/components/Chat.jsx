@@ -51,7 +51,7 @@ class Chat extends Component {
               "image":{
               "source":{
                 "imageUri":
-                  "https://00e9e64bac689f4134d0dc3bbea01b8745da42eb89461e5b0f-apidata.googleusercontent.com/download/storage/v1/b/beachhacksintermix/o/test2.png?qk=AD5uMEvvElrK05ICIps_XlvPoFcrrx_6p_Hes9lvfToqaQEpInRwQCQi0BBt1A7sEuz2XCD_JNnrpddm6LXMMff6McTJP3ZyVEt6vEzn4orkWsqI7kLY1aIbebgd2VwyqW4BFBXBtylk30qMHTx9w7VysyBUS4t0ZunmK6IAG0gseyJU1FhAYbxwnEBC043ksW9qrdr18frzRMym7Svr3yHIPlgI2GtbZ0CAriYNn_oh7XoHEzHB_dMFkgPEwu2vV0VBxNruA5IalMreIWEIihzaslBGHrl5ys3bZYL4_sk3foqg6ZX_lwduX5JrMLBfL7dEaAE2JQ6lshIhBbTwPPT-ufS2Z19Vysxol_S-1lzMdtRBWRQN7FC9NoVG-BuYvglij6pnzA82DVAMXuQ6geX4SMy2g9U7-UKcyGCnRm21Z6xa9hUrDTpupm4pWxw9V-_R7BznuWkoG74ufuEX_8Pm1yRdv33Da8wElJCo8lW6bpjjnbfaA_xnaXRzG3AUNqygo3edgLUG2mt2S1uMyVISkxtP5wc4GGakyg2Mg3whtilMfQbXounBQrkAo2xAMz7b5qfKKycGYO4PgP4sgHSPIB0D9xQtY_9JkFUQ1o8P8QuKb6HsC8okgjnF6Qvgrqi9L8_y4AZBMkL00oSVuswyTeXgOkCc01geCesu54B90pE0ZoaqR0-bPfvCrGTtC_LLhS-hZtqLgnzN2MJEUHcN_5ZS3p8UhN93j8hV674w8HrSyyOnVM3vEbFs6MeI3GFbg5ea8bChFdOoXvCrJbFsVbtTqdEaOQ"
+                  "https://00e9e64bac7c34a2c4985f57b6a5dfaf40a809bef143890d68-apidata.googleusercontent.com/download/storage/v1/b/beachhacksintermix/o/test1.jpg?qk=AD5uMEu4Hwfk0NcwDFfxnxk4F2h2AfwPryctmo7iwvk-Vh9tPW5KCcZteDJ7Re2mhWabra2AoBpjyt8svlmYnF3PCX3QmduqCh4AxkBUllrZ9kBnmPgfb4a7KJwKkRopjrkF_nIUN8Z-w0Amh1WWcK4HtIK7GmGQi9tqobYxODeAUFOLqJBPNb6SToWKfbGZ5dh3PhM_HeROijgumhRqPRY7uBbIMRRsIKS2NBI-WY3IGX2_Cc_oGy_-PBm91KrLL6lDNIgaDdGMyukD1YC5KulnATlGG3nq7QgtR9zzFbm-tKUFB8cZKnNb1J9D2Elh4CUq_uYu34UpChcpFD9DfN1MQMmt9ElX3hxNF2CXbZJC4N-npl9yRadVzfE510kCA2btLy5BUsC8bkV_B_WE6sDn3nr6Y9YzjmKYcRHuIGoCa_iiCjWHR26ICajY_cmq5GyHFxWSfBRc-SX5Vb_YWmEtyIaLxyNhEoURKthIIc0w2-bRneNmJHBMZEo1yfAzfN1U6DwTrZNLWLX1oy935MyuEBDca0-Cf0I7XgrUncJ9iFpBlTLzm6nn9NQra-ECO-tyukgsfZyRwk2mdkD62jRt_HxnJ2oKBzdGRJi_yHR696qrZ1hWevPhScYi2I0CSEeRoxzsqTzdbqTtfg49WrwsWbP0cV4aNnOHbDuoWMC_uQEf9MMjtVl4ppoTFFnc3A30RF0TujnnxX7q7tNEzwSrWdMwJaGHdx6rd-t5yJd8t-CRWQBeJsqveUA3DV1ujCuu3bkT3VlpGZFqaTVQJxKd7RFbEsBvXQ"
               }
             }
             }
@@ -141,13 +141,13 @@ class Chat extends Component {
 */
   displayEmotion = (googleResponse) =>{
     
-    if(googleResponse){
       //decompose full object
-      let emotion = googleResponse
-     // .getJSONArray("faceAnnotations");
-
-      console.log("Responses");
-      console.log(emotion[0].angerLikelihood);
+  
+    
+      //console.log(googleResponse[0]); undefined
+      
+        
+    
       
      // var joy = googleResponse["joyLikelihood"];
      /* var sorrow = googleResponse.faceAnnotations["sorrowLikelihood"];
@@ -162,15 +162,12 @@ class Chat extends Component {
       console.log(confidence);  
       console.log(joy);
       */
-    return(
-      <p className = "emotion_guess">Test</p>
-     );
-    }
-    else{
-      return(<p></p>);
-    }
-
-
+     if(googleResponse){
+      return(
+        <p id = "emotion_guess">{JSON.stringify({googleResponse})}</p>
+       );
+     }
+   
 
   }
   
@@ -204,6 +201,7 @@ class Chat extends Component {
                       currentUser={this.state.user}
                     />
                   <Input
+                  
                     onSendMessage={this.onSendMessage}
                   />
 

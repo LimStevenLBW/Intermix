@@ -171,6 +171,6 @@ transition: 1s;
   margin: 0px;
 }
 
-#canvas{
-  
+#emotion_guess{
+  font-size: 12px;
 }
