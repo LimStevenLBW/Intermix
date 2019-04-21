@@ -14,7 +14,7 @@ class Messages extends Component {
   renderMessage(message) {
     const {user, text} = message;
     const {currentUser} = this.props;
-
+    //Determine whether or not the message belongs to the current user
     const messageFromMe = user.id === currentUser.id;
 
     const className = messageFromMe ?
@@ -24,6 +24,8 @@ class Messages extends Component {
         <span
           className="avatar"
           style={{backgroundColor: user.clientData.color}}
+          //style={{backgroundImage: "url(" + {image} + ")"}}
+      
         />
           <div className="Message-content">
             <div className="username">

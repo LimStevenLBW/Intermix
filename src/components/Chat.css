@@ -49,6 +49,7 @@
   border-radius: 50%;
   display: inline-block;
   margin: 0 10px -10px;
+
 }
 
 .Message-content > .username {
@@ -72,7 +73,7 @@
   background-color: orangered;
 }
 
-form {
+.formChat {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -80,7 +81,7 @@ form {
   margin: 0 auto 40px;
 }
 
-input {
+.inputChat {
   padding: 5px;
   font-size: 16px;
   border-radius: 8px;
@@ -88,7 +89,7 @@ input {
   flex-grow: 1;
 }
 
-button {
+.submitChat {
   padding: 5px 10px;
   font-size: 16px;
   background-color: orangered;

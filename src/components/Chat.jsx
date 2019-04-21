@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Messages from "./Messages.jsx";
 import Input from "./Input.jsx"
-import App from '../App.css'
+import './Chat.css'
+
 /**
  * 
  */
@@ -32,6 +33,7 @@ class Chat extends Component {
           user.id = this.drone.clientId;
           this.setState({user});
       });
+
       //Assign observable room, the observable prefix is required
       const room = this.drone.subscribe("observable-room");
   
@@ -41,6 +43,13 @@ class Chat extends Component {
           messages.push({user, text: data});
           this.setState({messages});
       });
+
+       // A user joined the room!
+       room.on('member_join', user => {
+        console.log("a new member joined");
+        console.log(user.id);
+    });
+
     };
     
     randomName(){
@@ -55,6 +64,7 @@ class Chat extends Component {
       return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
     };
   
+    //Publish a new message to scaledrone
     onSendMessage = (message) => {
       this.drone.publish({
         room: "observable-room",

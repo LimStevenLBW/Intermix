@@ -29,15 +29,16 @@ class Input extends Component {
   render() {
     return (
       <div className="Input">
-        <form onSubmit={e => this.onSubmit(e)}>
+        <form className = "formChat" onSubmit={e => this.onSubmit(e)}>
           <input
+            className = "inputChat"
             onChange={e => this.onChange(e)}
             value={this.state.text}
             type="text"
             placeholder="Write a message~"
             autoFocus={true}
           />
-          <button>Send</button>
+          <button className = "submitChat">Send</button>
         </form>
       </div>
     );
