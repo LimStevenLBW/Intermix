@@ -32,11 +32,14 @@ class Chat extends Component {
       canvas.height = userVid.innerHeight;
 
       // TODO: implement taking snapshot for an interval amount of time, i.e. 5000ms
-      //setInterval(function(){ 
+      setInterval(function(){ 
         // drawImage is a canvas' function that will draw the image from specified source
         // Draw the video frame to the canvas and sent to .png file
-        //var currentImage = context.drawImage(userVid, 0,0, canvas.width, canvas.height).toDataURL('image/png');         
-      //}, 5000);
+        
+        context.drawImage(userVid, 0,0, canvas.width, canvas.height);
+        var currentImage = canvas.toDataURL('image/png');
+        currentImage = currentImage.replace(/^data:image\/(png|jpg);base64,/, "");
+      }, 5000);
 
       // Attach the video stream to the video element and autoplay.
       navigator.mediaDevices.getUserMedia(constraints)
