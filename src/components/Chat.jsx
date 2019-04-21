@@ -36,8 +36,10 @@ class Chat extends Component {
       setInterval(function(){ 
         // drawImage is a canvas' function that will draw the image from specified source
         // Draw the video frame to the canvas and sent to .png file
-       var currentImage = context.drawImage(userVid, 0,0, canvas.width, canvas.height).toDataURL();       
-       console.log("CANVS");  
+        
+        context.drawImage(userVid, 0,0, canvas.width, canvas.height);
+        var currentImage = canvas.toDataURL('image/png');
+        currentImage = currentImage.replace(/^data:image\/(png|jpg);base64,/, "");
       }, 5000);
 
       // Attach the video stream to the video element and autoplay.
