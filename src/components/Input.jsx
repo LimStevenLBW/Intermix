@@ -2,7 +2,7 @@ import {Component} from "react";
 import React from "react";
 
 /**
- * Handles User Text Input
+ * Handles User Text Input, assembles a message to send
  */
 class Input extends Component {
   state = {

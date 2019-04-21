@@ -53,11 +53,9 @@ class App extends Component {
                      autoFocus={true}
                      value = {this.state.inputName}/>
                   </h3>
-  
-                <input id = "clickInput" type="button" value="Create-A-Chat" onClick = {e => this.createRoom(e)}/>
+                <input id = "clickInput" type="submit" value="Create-A-Chat" onClick = {e => this.createRoom(e)}/>
               </form> 
             </div>
-          
 
            </body>
         </React.Fragment>

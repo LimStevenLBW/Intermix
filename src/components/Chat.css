@@ -34,7 +34,11 @@
   flex-direction: row-reverse;
   text-align: right;
 }
-
+.arrived{
+  margin-top: 10px;
+  flex-direction: row-reverse;
+  text-align: right;
+}
 .Message-content {
   display: inline-block;
 }
