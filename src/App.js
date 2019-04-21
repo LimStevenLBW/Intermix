@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import Chat from './components/Chat.jsx'
-import './home.css'
+import Chat from './components/Chat.jsx';
+import './home.css';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
         isRoomCreated: false,
-        input: {
-          inputName: "",
-          inputColor: "",
-      }
-   }
+        inputName: "",
+    }
   };
 
   componentDidMount() {};
@@ -20,12 +17,16 @@ class App extends Component {
    * 
    * @param {} e 
    */
-  onChange(e) {
+  onChangeHandler(e) {
     this.setState({inputName: e.target.value});
   }
 
+  onSubmitHandler(e){
+    this.createRoom(e);
+  }
+
   createRoom(e){
-    if(this.state.input.inputName.length <= 3){
+    if(this.state.inputName.length <= 3){
       alert("Please input a longer name");
     }
     else{
@@ -43,11 +44,14 @@ class App extends Component {
             <h2>Start Mixing</h2>
              
             <div id ="login">
-              <form action="/action_page.php">
+              <form onSubmit = {(e) => this.onSubmitHandler(e)}>
                 <input id="image-file" type="file" />
                   Your Name:
                   <h3>
-                    <input id = "nameInput" type="text" name="firstname" onChange={e => this.onChange(e)} />
+                    <input id = "nameInput" type="text" name="firstname"
+                     onChange={e => this.onChangeHandler(e)} 
+                     autoFocus={true}
+                     value = {this.state.inputName}/>
                   </h3>
   
                 <input id = "clickInput" type="button" value="Create-A-Chat" onClick = {e => this.createRoom(e)}/>
@@ -60,7 +64,7 @@ class App extends Component {
       );
     }
     else{
-      return(<Chat />)
+      return(<Chat input = {this.state.inputName}/>)
     }
    
   }

@@ -12,7 +12,7 @@ class Chat extends Component {
         this.state = {
             messages: [],
             user: {
-              username: this.randomName(),
+              username: this.props.input,
               color: this.randomColor(),
             }
         }
