@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google-cloud/storage": "^2.5.0",
     "@google-cloud/vision": "^0.25.0",
+    "base64-img": "^1.0.4",
     "canvas": "^2.4.1",
+    "filereader": "^0.10.3",
+    "fs": "0.0.1-security",
     "http2": "^3.3.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
