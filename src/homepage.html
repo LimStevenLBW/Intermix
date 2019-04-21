@@ -1,0 +1,111 @@
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto+Mono+" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+   background-image: url("background1.jpg");
+   font-family: 'Roboto Mono', monospace;
+   font-size: 30px;
+}
+
+h1 {
+	font-size:45px;
+	color: white;
+	text-align: center;
+	padding-top: 104px
+	}
+
+h2 {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 30px;
+	color: white;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 15px;
+  }
+
+h3 {
+	padding-left: 1px;
+	margin-top: 0px;
+	padding-top: 20px;
+   }
+
+form {
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Permanent Marker', cursive;
+	margin-top: 80px;
+	 }
+
+#login {
+	border-radius: 100px;
+	border: 2px solid white;
+	padding: 20px;
+	width: 300px;
+	height: 350px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-bottom: auto;
+  	margin-top: auto;
+  	}
+
+#clickInput {
+  background-color: #FDF5E6;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+
+}
+
+  #clickInput:hover {
+background-color: #99ffe6;
+transition: 1s;
+}
+
+
+#image-file {
+	 padding-left: 65px;
+}
+
+button {
+	background-image: url();
+}
+
+</style>
+</head>
+<body>
+
+<SCRIPT type="Text/JavaScript">
+	function joinChat(){
+		$(document).ready(function(){
+			window.location = "chatroom.html";
+		});
+	}
+</SCRIPT>
+
+<h1>I n t e r m i x</h1>
+
+<h2>Start Mixing</h2>
+
+<div id ="login">
+	<form action="/chat">
+		    <input id="image-file" type="file" />
+			Your Name:
+  		<h3><input id = "nameInput" type="text" name="firstname" value=""></h3>
+ 		<input id = "clickInput" type="button" onclick="joinChat()" value="Join-a-Chat">
+
+	</form> 
+</div>
+
+		</body>
+</html>

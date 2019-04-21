@@ -1,0 +1,115 @@
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|" rel="stylesheet">
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body  {
+   background-image: url("background1.jpg");
+}
+
+
+#chat {
+	background-color: #F5F5F5;
+  width: 30%;
+  min-height: 70%;
+  border-radius: 30px;
+  border: 10px solid #996666;
+  padding: 20px;
+  margin: 20px;
+  height: 40px;
+  margin-top: 100px;
+  margin-left: 150px;
+
+}
+
+#picture {
+  background-color: #F5F5F5;
+  width: 75%;
+  min-height: 40%;
+  border-radius: 30px;
+  border: 10px solid #996666;
+  padding: 10px;
+  margin: 5px;
+  height: 2px;
+  margin-top: -540px;
+  margin-left: 160%;
+}
+
+#emotion {
+	  background-color: #F5F5F5;
+  width: 75%;
+  min-height: 40%;
+  border-radius: 30px;
+  border: 10px solid #996666;
+  padding: 10px;
+  margin: 5px;
+  height: 2px;
+  margin-top: 20px;
+  margin-left: 160%;
+}
+
+textarea {
+   resize: none;
+   width: 100%;
+   height: 80%;
+   border-radius: 30px;
+   border: none;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+#send {
+	background-color: #996666;
+	border-radius: 100px;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: 'Permanent Marker', cursive;
+
+}
+
+ #send:hover {
+background-color: #ff9999;
+transition: 1s;
+}
+
+#clickInput:hover {
+background-color: #99ffe6;
+transition: 1s;
+}
+
+#message {
+	width: 90%;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div id ="chat">
+		<textarea rows="2" cols="42"></textarea><br>
+		<input id = "message" type="text" name="message" value=""><br>
+		<input id = "send" type="button" value="Send!">
+
+	<div id ="picture">
+	</div>
+	<div id ="emotion">
+	</div>
+	</div>
+
+
+	
+
+
+</body>
+</html>
