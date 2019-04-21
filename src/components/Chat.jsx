@@ -10,37 +10,38 @@ class Chat extends Component {
         super(props);
         this.state = {
             messages: [],
-            member: {
-            username: this.randomName(),
-            color: this.randomColor(),
+            user: {
+              username: this.randomName(),
+              color: this.randomColor(),
             }
         }
-    
-        //SETUP SCALE DRONE CONNECTION
-        this.drone = new window.Scaledrone("Jh23ZEsBY5q1UjuJ", {
-            data: this.state.member
-        });
-    
-        this.drone.on('open', error => {
-            if (error) {
-            return console.error(error);
-            }
-            const member = {...this.state.member};
-            member.id = this.drone.clientId;
-            this.setState({member});
-        });
-        
-        const room = this.drone.subscribe("observable-room");
-    
-        //Suscribe to data event of room to know when messages arrive
-        room.on('data', (data, member) => {
-            const messages = this.state.messages;
-            messages.push({member, text: data});
-            this.setState({messages});
-        });
     }
 
-    componentDidMount() {};
+    componentDidMount() {
+      //SETUP SCALE DRONE CONNECTION
+      this.drone = new window.Scaledrone("Jh23ZEsBY5q1UjuJ", {
+          data: this.state.user
+      });
+  
+      //Scale drone open event, creates the room
+      this.drone.on('open', error => {
+          if (error) {
+          return console.error(error);
+          }
+          const user = {...this.state.user};
+          user.id = this.drone.clientId;
+          this.setState({user});
+      });
+      //Assign observable room, the observable prefix is required
+      const room = this.drone.subscribe("observable-room");
+  
+      //Suscribe to data event of room to know when messages arrive
+      room.on('data', (data, user) => {
+          const messages = this.state.messages;
+          messages.push({user, text: data});
+          this.setState({messages});
+      });
+    };
     
     randomName(){
       const adjectives = ["autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling", "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy", "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering", "withered", "wild", "black", "young", "holy", "solitary", "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively", "nameless"];
@@ -66,7 +67,7 @@ class Chat extends Component {
         <React.Fragment>
             <Messages
               messages={this.state.messages}
-              currentMember={this.state.member}
+              currentUser={this.state.user}
             />
   
             <Input

@@ -4,10 +4,11 @@ import Chat from './components/Chat.jsx'
 class App extends Component {
   constructor(){
     super();
-  }
+  };
 
   componentDidMount() {};
   
+
   render() {
     return (
       <React.Fragment>
