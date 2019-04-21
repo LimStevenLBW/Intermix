@@ -45,11 +45,36 @@ class Chat extends Component {
       });
 
        // A user joined the room!
-       room.on('member_join', user => {
+      room.on('member_join', user => {
         console.log("a new member joined");
         console.log(user.id);
-    });
+      });
+      
 
+      const userVid = document.getElementById('userVid');
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      const constraints = {
+        // this will allow to ask user for permission of video access
+        video: true,
+      };
+
+      // setup width & height of canvas to 
+      canvas.width = userVid.innerWidth;
+      canvas.height = userVid.innerHeight;
+
+      // TODO: implement taking snapshot for an interval amount of time, i.e. 5000ms
+      //setInterval(function(){ 
+        // drawImage is a canvas' function that will draw the image from specified source
+        // Draw the video frame to the canvas and sent to .png file
+        //var currentImage = context.drawImage(userVid, 0,0, canvas.width, canvas.height).toDataURL('image/png');         
+      //}, 5000);
+
+      // Attach the video stream to the video element and autoplay.
+      navigator.mediaDevices.getUserMedia(constraints)
+      .then((stream) => {
+          userVid.srcObject = stream;
+      });
     };
     
     randomName(){
@@ -75,14 +100,17 @@ class Chat extends Component {
     render() {
       return (
         <React.Fragment>
-            <Messages
-              messages={this.state.messages}
-              currentUser={this.state.user}
-            />
-  
-            <Input
-              onSendMessage={this.onSendMessage}
-            />
+          <Messages
+            messages={this.state.messages}
+            currentUser={this.state.user}
+          />
+
+          <Input
+            onSendMessage={this.onSendMessage}
+          />
+          
+          <video id="userVid" controls autoplay></video>
+          <canvas id = "canvas"></canvas>
         </React.Fragment>
       );
     }
