@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chat from './components/Chat.jsx';
 import './home.css';
+import api from './apikey.json';
 
 class App extends Component {
   constructor(){
@@ -11,8 +12,10 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {};
-
+  componentDidMount() {
+   
+  };
+  
   /**
    * 
    * @param {} e 

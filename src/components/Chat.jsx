@@ -19,6 +19,7 @@ class Chat extends Component {
     }
 
     componentDidMount() {
+      
       const userVid = document.getElementById('userVid');
       const canvas = document.getElementById('canvas');
       const context = canvas.getContext('2d');
@@ -32,11 +33,12 @@ class Chat extends Component {
       canvas.height = userVid.innerHeight;
 
       // TODO: implement taking snapshot for an interval amount of time, i.e. 5000ms
-      //setInterval(function(){ 
+      setInterval(function(){ 
         // drawImage is a canvas' function that will draw the image from specified source
         // Draw the video frame to the canvas and sent to .png file
-        //var currentImage = context.drawImage(userVid, 0,0, canvas.width, canvas.height).toDataURL('image/png');         
-      //}, 5000);
+       var currentImage = context.drawImage(userVid, 0,0, canvas.width, canvas.height).toDataURL();       
+       console.log("CANVS");  
+      }, 5000);
 
       // Attach the video stream to the video element and autoplay.
       navigator.mediaDevices.getUserMedia(constraints)
@@ -68,6 +70,8 @@ class Chat extends Component {
           messages.push({user, text: data});
           this.setState({messages});
       });
+
+
 /*
        // A user joined the room!
        room.on('member_join', user => {
@@ -84,6 +88,28 @@ class Chat extends Component {
       
     };
 
+    setupCloudVision = () =>{
+      // Imports the Google Cloud client library
+     
+                
+      
+        // Creates a client
+        //const client = new vision.ImageAnnotatorClient();
+/*
+        // Performs label detection on the image file
+        client
+          .labelDetection('./resources/wakeupcat.jpg')
+          .then(results => {
+            const labels = results[0].labelAnnotations;
+
+            console.log('Labels:');
+            labels.forEach(label => console.log(label.description));
+          })
+          .catch(err => {
+            console.error('ERROR:', err);
+          });
+          */
+    }
 
     randomColor(){
       return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
@@ -115,6 +141,7 @@ class Chat extends Component {
 
             <video id="userVid" controls autoplay></video>
             <canvas id = "canvas"></canvas>
+
         </React.Fragment>
       );
     }
