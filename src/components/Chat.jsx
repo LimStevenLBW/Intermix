@@ -19,6 +19,27 @@ class Chat extends Component {
     }
 
     componentDidMount() {
+      let requestBody = JSON.stringify({
+        requests: [
+          {
+            features: [
+              { type: 'LABEL_DETECTION', maxResults: 10 },
+              { type: 'FACE_DETECTION', maxResults: 5 },
+              { type: 'LOGO_DETECTION', maxResults: 5 },
+              { type: 'TEXT_DETECTION', maxResults: 5 },
+              { type: 'IMAGE_PROPERTIES', maxResults: 5 },
+              { type: 'CROP_HINTS', maxResults: 5 },
+              { type: 'WEB_DETECTION', maxResults: 5 }
+            ],
+            image: {
+              source: {
+                imageUri: "./test1.jpg"
+              }
+            }
+          }
+        ]
+      });
+
       
       const userVid = document.getElementById('userVid');
       const canvas = document.getElementById('canvas');
@@ -90,27 +111,50 @@ class Chat extends Component {
       
     };
 
-    setupCloudVision = () =>{
-      // Imports the Google Cloud client library
-     
-                
-      
-        // Creates a client
-        //const client = new vision.ImageAnnotatorClient();
-/*
-        // Performs label detection on the image file
-        client
-          .labelDetection('./resources/wakeupcat.jpg')
-          .then(results => {
-            const labels = results[0].labelAnnotations;
-
-            console.log('Labels:');
-            labels.forEach(label => console.log(label.description));
-          })
-          .catch(err => {
-            console.error('ERROR:', err);
-          });
-          */
+    submitToGoogle = async () => {
+      try {
+        this.setState({ uploading: true });
+        let body = JSON.stringify({
+          requests: [
+            {
+              features: [
+                { type: 'LABEL_DETECTION', maxResults: 10 },
+                { type: 'FACE_DETECTION', maxResults: 5 },
+                { type: 'LOGO_DETECTION', maxResults: 5 },
+                { type: 'IMAGE_PROPERTIES', maxResults: 5 },
+                { type: 'CROP_HINTS', maxResults: 5 },
+                { type: 'WEB_DETECTION', maxResults: 5 }
+              ],
+              image: {
+                source: {
+                  imageUri: "./test1.png"
+                }
+              }
+            }
+          ]
+        });
+        let response = await fetch(
+          'https://vision.googleapis.com/v1/images:annotate?key=' +
+            Environment['GOOGLE_CLOUD_VISION_API_KEY'],
+          {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: body
+          }
+        );
+        let responseJson = await response.json();
+        console.log(responseJson);
+        this.setState({
+          googleResponse: responseJson,
+          uploading: false
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
     }
 
     randomColor(){
