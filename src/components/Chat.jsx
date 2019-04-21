@@ -110,29 +110,10 @@ class Chat extends Component {
       */
       
     };
-
+/*
     submitToGoogle = async () => {
       try {
         this.setState({ uploading: true });
-        let body = JSON.stringify({
-          requests: [
-            {
-              features: [
-                { type: 'LABEL_DETECTION', maxResults: 10 },
-                { type: 'FACE_DETECTION', maxResults: 5 },
-                { type: 'LOGO_DETECTION', maxResults: 5 },
-                { type: 'IMAGE_PROPERTIES', maxResults: 5 },
-                { type: 'CROP_HINTS', maxResults: 5 },
-                { type: 'WEB_DETECTION', maxResults: 5 }
-              ],
-              image: {
-                source: {
-                  imageUri: "./test1.png"
-                }
-              }
-            }
-          ]
-        });
         let response = await fetch(
           'https://vision.googleapis.com/v1/images:annotate?key=' +
             Environment['GOOGLE_CLOUD_VISION_API_KEY'],
@@ -156,9 +137,15 @@ class Chat extends Component {
       }
     };
     }
+*/
 
+/**
+ * Generates a random color as a placeholder for an avatar
+ */
     randomColor(){
-      return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+      return '#' + Math.floor(
+        Math.random() * 0xFFFFFF
+        ).toString(16);
     };
   
     //Publish a new message to scaledrone
@@ -176,18 +163,23 @@ class Chat extends Component {
       
       return (
         <React.Fragment>
-            <Messages
-              messages={this.state.messages}
-              currentUser={this.state.user}
-            />
-  
-            <Input
-              onSendMessage={this.onSendMessage}
-            />
+              <body>
+                <div id ="chat">
+                  <Messages
+                      messages={this.state.messages}
+                      currentUser={this.state.user}
+                    />
+                  <Input
+                    onSendMessage={this.onSendMessage}
+                  />
 
-            <video id="userVid" controls autoplay></video>
-            <canvas id = "canvas"></canvas>
-
+                  <div id ="picture">    
+                     <video id="userVid" controls autoplay></video>
+                       <canvas id = "canvas"></canvas>
+                  </div>
+                   <div id ="emotion"> </div>
+                 </div>
+              </body>
         </React.Fragment>
       );
     }

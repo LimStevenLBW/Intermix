@@ -31,19 +31,18 @@ class Input extends Component {
       <div className="Input">
         <form className = "formChat" onSubmit={e => this.onSubmit(e)}>
           <input
-            className = "inputChat"
+            id = "message"
             onChange={e => this.onChange(e)}
             value={this.state.text}
             type="text"
             placeholder="Write a message~"
             autoFocus={true}
           />
-          <button className = "submitChat">Send</button>
+          <button id= "send">Send!</button>
         </form>
       </div>
     );
   }
-  
 }
 
 export default Input;
