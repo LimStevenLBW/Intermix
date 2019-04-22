@@ -41,6 +41,7 @@ class Chat extends Component {
         var currentImage = canvas.toDataURL('image/png');
       //  currentImage = currentImage.replace(/^data:image\/(png|jpg);base64,/, "");
       
+      /*
         let requestBodyStringified;
         requestBodyStringified = JSON.stringify({
           requests: [
@@ -64,7 +65,7 @@ class Chat extends Component {
       .then((stream) => {
           userVid.srcObject = stream;
       });
-
+*/
       //SETUP SCALE DRONE CONNECTION
       this.drone = new window.Scaledrone("Jh23ZEsBY5q1UjuJ", {
           data: this.state.user
@@ -104,13 +105,13 @@ class Chat extends Component {
       */
       
   };
-
+/*
   submitToGoogle = async (requestBody) => {
     try {
       this.setState({ uploading: true });
       let response = await fetch(
         'https://vision.googleapis.com/v1/images:annotate?key=' +
-        "AIzaSyA89OvAJLy3-YG33_ePHRODoFeQJeNPBW8",
+        apikey",
         {
           headers: {
             Accept: 'application/json',
@@ -138,8 +139,9 @@ class Chat extends Component {
           "sorrowLikelihood": "VERY_UNLIKELY",
           "angerLikelihood": "VERY_UNLIKELY",
           "surpriseLikelihood": "VERY_UNLIKELY",
+
 */
-  displayEmotion = (googleResponse) =>{
+  //displayEmotion = (googleResponse) =>{
     
       //decompose full object
   
@@ -162,14 +164,15 @@ class Chat extends Component {
       console.log(confidence);  
       console.log(joy);
       */
+     /*
      if(googleResponse){
       return(
         <p id = "emotion_guess">{JSON.stringify({googleResponse})}</p>
        );
-     }
+     }*/
    
 
-  }
+ // }
   
 /**
  * Generates a random color as a placeholder for an avatar
@@ -209,12 +212,12 @@ class Chat extends Component {
                      <video id="userVid" controls autoplay></video>
                        <canvas id = "canvas"></canvas>
                   </div>
-                   <div id ="emotion">{this.displayEmotion(this.state.googleResponse)}</div>
+                   <div id ="emotion"></div>
                  </div>
               </body>
         </React.Fragment>
       );
-    }
+    }//{this.displayEmotion(this.state.googleResponse)}
     
 }
  
